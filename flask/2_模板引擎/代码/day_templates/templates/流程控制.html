@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>流程控制</title>
+</head>
+<body>
+<h2>判断语句</h2>
+<p>
+    {% if num > 20 %}
+        <div>玉树临风前，驴骡正酣眠</div>
+    {% endif %}
+
+    {% if num < 60 %}
+        <div>不及格</div>
+    {% elif num < 70 %}
+        <div>及格</div>
+    {% endif %}
+
+</p>
+<h2>循环</h2>
+<p>
+    {% for value in list1 %}
+        <li>{{ value }}</li>
+    {% endfor %}
+    {% for value in range(1,10) %}
+        <p>{{ value }}---{{ loop.index0 }}</p>
+    {% endfor %}
+</p>
+</body>
+</html>

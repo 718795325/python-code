@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>{{ title }}</title>
+    {% endblock title %}
+    {# 外链的css #}
+    {% block css %}
+    {% endblock css %}
+     {# 外链js #}
+    {% block js %}
+    {% endblock js %}
+</head>
+<body>
+<table>
+    <tr><td>你好</td><td>吃了吗</td><td>D大调</td></tr>
+</table>
+
+{# 导航栏 #}
+{% block nav %}
+    <h2>京东</h2>
+{% endblock %}
+
+{# 内容 #}
+{% block content %}
+{% endblock %}
+
+{# 页脚 #}
+{% block footer %}
+{% endblock footer %}
+
+</body>
+</html>

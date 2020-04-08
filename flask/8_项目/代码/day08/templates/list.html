@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <div class="bs-example" data-example-id="hoverable-table">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for user in pagination.items %}
+        <tr>
+
+          <td>{{ user.username }}</td>
+          <td>{{ user.password }}</td>
+        </tr>
+      {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+    <nav aria-label="...">
+      <ul class="pagination">
+          {% if pagination.page == 1 %}
+            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+          {% else %}
+              <li><a href="{{ url_for('bp.list_user',page=pagination.prev_num) }}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+          {% endif %}
+        {#  页码范围    #}
+          {% for current in pagination.page_range %}
+              {% if current == pagination.page %}
+                <li class="active"><a href="{{ url_for('bp.list_user',page=current) }}">{{ current }} <span class="sr-only">(current)</span></a></li>
+              {% else %}
+                  <li><a href="{{ url_for('bp.list_user',page=current) }}">{{ current }}</a></li>
+              {% endif %}
+          {% endfor %}
+
+        {% if pagination.page == pagination.pages %}
+            <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+        {% else %}
+            <li><a href="{{ url_for('bp.list_user',page=pagination.next_num) }}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+
+      {% endif %}
+      </ul>
+   </nav>
+{% endblock %}

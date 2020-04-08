@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <style>
+        span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    {{  form.csrf_token  }}
+    <p>
+    用户名：<input type="text" name="username">
+    {% for error in form.username.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+    </p>
+    <p>
+        密码：<input type="password" name="password">
+        {% for error in form.password.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        确认密码：<input type="password" name="confirm">
+        {% for error in form.confirm.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        email: <input type="text" name="email">
+        {% for error in form.email.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        电话：<input type="text" name="phone">
+        {% for error in form.phone.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <input type="submit">
+    
+</form>
+</body>
+</html>

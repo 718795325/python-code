@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{# session是全局对象，在模板和后端代码里都可以使用   #}
+{% if session.get('username') %}
+    <p>欢迎{{ session.get('username') }}回来, &nbsp; <a href="{{ url_for('blue.logout') }}">退出登录</a></p>
+{% else %}
+    <p>你还没有登录，请先 <a href="{{ url_for('blue.login') }}">登录</a> </p>
+{% endif %}
+</body>
+</html>

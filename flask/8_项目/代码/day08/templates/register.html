@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{{ url_for('bp.register_user') }}" method="post">
+    {{ form.csrf_token }}
+    手机号： <input type="tel" name="phone" id="phone">
+    {% for error in form.phone.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+    <br>
+
+    <input type="text" name="sms"> <input type="button" value="发送验证码" id="send">
+     {% for error in form.sms.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+    <br>
+    <input type="text" name="code">
+    <img src="{{ url_for('bp.verify_code') }}" alt="" onclick="this.src={{ url_for('bp.verify_code') }}+'?'+Math.random()">
+     {% for error in form.code.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+    <br>
+    <input type="submit">
+</form>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+     $("#send").click(function () {
+        num = 5;
+        $(this).attr('disabled',true);
+        $(this).prop('value',""+num+"秒后发送");
+        let _this = this;  //this表示当前按钮
+        var timer = setInterval(function () {
+            num -= 1;
+            if (num <0){
+                $(_this).attr('disabled',false);
+                $(this).prop('value',"发送验证码")
+                return
+            }
+            $(_this).prop('value',""+num+"秒后发送");
+            console.log(num)
+        },1000);
+        let phone = $("#phone").val();
+        let csrf = $("[name='csrf_token']").val();
+        // 发送短信验证码
+        //ajax
+        $.post("/send/",{'phone':phone,'csrf_token':csrf},function (data) {
+            console.log(data)
+        })
+
+    })
+</script>

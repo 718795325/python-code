@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宏</title>
+</head>
+<body>
+{# 定义一个宏 #}
+{% macro show(num) %}
+    <h2>{{ num }}</h2>
+{% endmacro %}
+
+<p>
+    {# 调用宏 #}
+    {{ show(100) }}
+</p>
+</body>
+</html>

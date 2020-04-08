@@ -1,0 +1,16 @@
+{# 继承父模板的内容 #}
+{% extends 'comm/parent.html' %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/index.css">
+{% endblock %}
+
+{% block nav %}
+    {# 保留继承父模板的内容   super只针对当前的block #}
+    {{ super() }}
+    <h2>刘强东</h2>
+{% endblock %}
+
+{# 如果父模板中有同名的block，会被覆盖 #}
+{% block content %}
+    <div></div>
+{% endblock %}

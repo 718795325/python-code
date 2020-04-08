@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天</title>
+</head>
+<body>
+<input type="text" name="msg" id="msg"> <input type="button" value="说" id="speak">
+<div id="content">
+
+</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.slim.min.js"></script>
+<script>
+    var ws = new WebSocket('ws://127.0.0.1:9000/ws');
+    $("#speak").click(function(){
+        // 获取信息
+        msg = $("#msg").val();
+        // 发行信息给服务器
+        ws.send(msg)
+    })
+    // 接收服务器端发过来的信息
+    ws.onmessage = function(evt){
+        $("#content").append("<p>"+evt.data+"</p>")
+    }
+</script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>格式化时间</title>
+    {% block scripts %}
+        {{ moment.include_jquery() }}
+        {{ moment.include_moment() }}
+    {% endblock %}
+</head>
+<body>
+{# 设置语言 #}
+{{ moment.locale('zh-CN') }}
+
+{# 简单的格式化时间显示 #}
+<div>时间：{{ moment(time).format('LLLL') }}</div>
+<div>时间：{{ moment(time).format('LLL') }}</div>
+<div>时间：{{ moment(time).format('LL') }}</div>
+<div>时间：{{ moment(time).format('L') }}</div>
+<div>时间：{{ moment(time).format('YYYY年MM月DD') }}</div>
+
+{# 自定义格式化显示 #}
+<div>自定义：{{ moment(time).format('YYYY-MM-DD HH:mm:ss') }}</div>
+
+{# 显示时间差 #}
+<div>发表于：{{ moment(time).fromNow() }}</div>
+</body>
+</html>

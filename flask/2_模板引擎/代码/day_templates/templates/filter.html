@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+</head>
+<body>
+<p>
+        过滤器
+    {{ name | upper }}
+</p>
+<p>
+    <p>safe不会不会把变量的内容的标签转义</p>
+    {{ content | safe}}
+<p>autoescap可以把多个变量视为安全，不转义内容</p>
+</p>
+{% autoescape off %}
+{{ content }} <br>
+{{ content }}
+{% endautoescape %}
+</body>
+</html>

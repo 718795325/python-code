@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if username  %}
+  <p>{{username}} &nbsp; &nbsp; <a href="/logout/">退出登录</a></p>
+{% else %}
+   <p>非法用户</p>
+{% end %}
+<table border="1" cellspacing="0" width="80%">
+    {%  for house in houses  %}
+      <tr>
+          <td>{{ house['title'] }}</td>
+          {% if house.get('price') > 200 %}
+            <td>{{ house.get('price') }}</td>
+          {% else %}
+            <td style="height:50px;background: red;">{{ house.get('price') }}</td>
+          {% end  %}
+          <td>{{  house['score'] }}</td>
+          <td>{{ house['comments'] }}</td>
+          <td>{{  house['position'] }}</td>
+
+      </tr>
+
+    {% end %}
+</table>
+<p>
+    {% raw content %}
+</p>
+<p>
+    {{ square(10)  }}
+</p>
+<!--<img src="{{ static_url('girl.jpg') }}" alt="">-->
+</body>
+</html>
